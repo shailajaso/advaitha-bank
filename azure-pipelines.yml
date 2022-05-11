@@ -8,7 +8,7 @@ trigger:
 - charandev-trigger
 
 pool:
-  vmImage: ubuntu-latest
+  default
 
 steps:
 - script: echo Hello, world!
