@@ -21,3 +21,9 @@ steps:
     repository: 'charankumarcpl/batch2-demo'
     command: 'build'
     Dockerfile: 'dockerfile'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'charancatoz2-docker-connection'
+    repository: 'charankumarcpl/batch2-demo'
+    command: 'push'
