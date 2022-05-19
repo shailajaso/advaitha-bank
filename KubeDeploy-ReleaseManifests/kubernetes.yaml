@@ -17,6 +17,7 @@ spec:
       containers:
         - name: bankhome
           image: docker.io/charankumarcpl/batch2-demo:latest
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "50Mi"
@@ -26,7 +27,7 @@ spec:
               cpu: 10m
           ports:
             - containerPort: 8080
-          imagePullPolicy: Always
+              
 ---
 apiVersion: v1
 kind: Service
