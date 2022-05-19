@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankhome
+  labels:
+    app: bankhome
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bankhome
+  template:
+    metadata:
+      labels:
+        app: bankhome
+    spec:
+      containers:
+        - name: bankhome
+          image: docker.io/charankumarcpl/batch2-demo:latest
+          resources:
+            limits:
+              memory: "50Mi"
+              cpu: 10m
+            requests:
+              memory: "10Mi"
+              cpu: 10m
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bankhome-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 32000
+  selector:
+    app: bankhome
