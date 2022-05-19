@@ -7,7 +7,7 @@ MAINTAINER charankumar
 LABEL maintainer="charankumar.palla@gmail.com"
 # WORKDIR /usr/mycode
 COPY . .
-RUN npm install
+# RUN npm install
 EXPOSE 8080
 
 #RUN 
