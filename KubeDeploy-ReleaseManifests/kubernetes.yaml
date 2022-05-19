@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: bankhome
-          image: docker.io/charankumarcpl/batch2-demo:#{imageTag}
+          image: docker.io/charankumarcpl/batch2-demo:#{imageTag}#
           imagePullPolicy: Always
           resources:
             limits:
