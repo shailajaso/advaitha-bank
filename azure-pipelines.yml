@@ -11,6 +11,11 @@ pool:
   default
 
 steps:
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'  
+
+
 # - task: DockerInstaller@0
 #   inputs:
 #     dockerVersion: '17.09.0-ce'
@@ -32,7 +37,7 @@ steps:
 
 - task: replacetokens@5
   inputs:
-    targetFiles: '*.yaml'
+    targetFiles: '**/*.yaml'
     encoding: 'auto'
     tokenPattern: 'default'
     writeBOM: true
@@ -44,3 +49,9 @@ steps:
     useLegacyPattern: false
     enableTelemetry: true
     
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
