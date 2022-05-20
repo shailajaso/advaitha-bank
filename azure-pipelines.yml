@@ -11,9 +11,7 @@ pool:
   default
 
 steps:
-- task: CopyFiles@2
-  inputs:
-    targetFolder: '$(Build.ArtifactStagingDirectory)'  
+
 
 
 # - task: DockerInstaller@0
@@ -49,7 +47,22 @@ steps:
     useLegacyPattern: false
     enableTelemetry: true
     
-
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'  
+- task: replacetokens@5
+  inputs:
+    targetFiles: '**/*.yaml'
+    encoding: 'auto'
+    tokenPattern: 'default'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    actionOnNoFiles: 'continue'
+    enableTransforms: false
+    enableRecursion: false
+    useLegacyPattern: false
+    enableTelemetry: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
