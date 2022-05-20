@@ -18,7 +18,7 @@ steps:
 #   inputs:
 #     dockerVersion: '17.09.0-ce'
 
-- task: DockerBuild@2
+- task: Docker@2
   inputs:
     containerRegistry: 'charancatoz2-docker-connection'
     repository: 'charankumarcpl/batch2-demo'
@@ -26,7 +26,7 @@ steps:
     Dockerfile: 'dockerfile'
     tags: '$(Build.BuildNumber)'
 
-- task: DockerPush@2
+- task: Docker@2
   inputs:
     containerRegistry: 'charancatoz2-docker-connection'
     repository: 'charankumarcpl/batch2-demo'
