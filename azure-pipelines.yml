@@ -18,20 +18,20 @@ steps:
 #   inputs:
 #     dockerVersion: '17.09.0-ce'
 
-# - task: Docker@2
-#   inputs:
-#     containerRegistry: 'charancatoz2-docker-connection'
-#     repository: 'charankumarcpl/batch2-demo'
-#     command: 'build'
-#     Dockerfile: 'dockerfile'
-#     tags: '$(Build.BuildNumber)'
+- task: DockerBuild@2
+  inputs:
+    containerRegistry: 'charancatoz2-docker-connection'
+    repository: 'charankumarcpl/batch2-demo'
+    command: 'build'
+    Dockerfile: 'dockerfile'
+    tags: '$(Build.BuildNumber)'
 
-# - task: Docker@2
-#   inputs:
-#     containerRegistry: 'charancatoz2-docker-connection'
-#     repository: 'charankumarcpl/batch2-demo'
-#     command: 'push'
-#     tags: '$(Build.BuildNumber)'
+- task: DockerPush@2
+  inputs:
+    containerRegistry: 'charancatoz2-docker-connection'
+    repository: 'charankumarcpl/batch2-demo'
+    command: 'push'
+    tags: '$(Build.BuildNumber)'
 
 - task: replacetokens@5
   inputs:
